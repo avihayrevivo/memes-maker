@@ -11,6 +11,6 @@ function renderGallery() {
 
 function onImgSelect(id) {
     const meme = getMeme()
-    meme.selectedLineIdx = id
+    meme.selectedImgIdx = id
     setImg()
 }

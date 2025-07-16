@@ -6,8 +6,17 @@ var gMeme = {
     lines: [
         {
             txt: 'example',
-            size: 20,
-            color: 'white'
+            size: 30,
+            color: 'white',
+            x: 200,
+            y: 40
+        },
+        {
+            txt: 'example2',
+            size: 40,
+            color: 'black',
+            x: 200,
+            y: 360
         }
     ]
 }
@@ -17,12 +26,19 @@ function getMeme() {
     return gMeme
 }
 
-function setImg(){
-    const elGallery = document.querySelector('.gallery')
-    elGallery.classList.add('hidden')
+function addLine() {
+    gMeme.lines.push(
+        {
+            txt: 'write something',
+            size: 30,
+            color: 'black',
+            x: 200,
+            y: 100
+        }
+    )
+}
 
-    const elEditor = document.querySelector('.editor')
-    elEditor.classList.remove('hidden')
-
-    renderMeme()
+function switchLine() {
+    gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
 }

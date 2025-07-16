@@ -11,24 +11,78 @@ function onInit() {
 
 function renderMeme() {
     const meme = getMeme()
-    const id = meme.selectedLineIdx
     const elImg = new Image()
-    elImg.src = `img/${id}.jpg`
+    elImg.src = `img/${meme.selectedImgIdx}.jpg`
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
-    const text = meme.lines[0].txt
-    const color = meme.lines[0].color
-    const size = meme.lines[0].size
-    gCtx.lineWidth = 1
-    gCtx.fillStyle = color
-    gCtx.font = size + 'px Arial'
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
-    gCtx.fillText(text, 200, 40)
-    // gCtx.strokeText(text, offsetX, offsetY)
+    meme.lines.forEach((line, idx) => {
+        gCtx.fillStyle = line.color
+        gCtx.font = line.size + 'px Arial'
+        gCtx.textAlign = 'center'
+        gCtx.fillText(line.txt, line.x, line.y)
+    })
+    drawSelectedBox()
+}
+
+function setImg() {
+    const elGallery = document.querySelector('.gallery')
+    elGallery.classList.add('hidden')
+
+    const elEditor = document.querySelector('.editor')
+    elEditor.classList.remove('hidden')
+
+    renderMeme()
 }
 
 function setLineTxt(elInput) {
     const meme = getMeme()
-    meme.lines[0].txt = elInput.value
+    meme.lines[meme.selectedLineIdx].txt = elInput.value
     renderMeme()
+}
+
+function onSetColor(color) {
+    const meme = getMeme()
+    meme.lines[meme.selectedLineIdx].color = color
+    renderMeme()
+}
+
+function downloadCanvas(elLink) {
+    const dataUrl = gCanvas.toDataURL()
+    elLink.href = dataUrl
+    elLink.download = 'my-meme'
+}
+
+function onIncreaseFont() {
+    const meme = getMeme()
+    meme.lines[meme.selectedLineIdx].size += 10
+    renderMeme()
+}
+
+function onDecreaseFont() {
+    const meme = getMeme()
+    meme.lines[meme.selectedLineIdx].size -= 10
+    renderMeme()
+}
+
+function onAddLine() {
+    addLine()
+    renderMeme()
+}
+
+function onSwitchLine() {
+    const input = document.querySelector('.canvas-text').value = ''
+    switchLine()
+    renderMeme()
+}
+
+function drawSelectedBox() {
+    const meme = getMeme()
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'black'
+    const currMeme = meme.lines[meme.selectedLineIdx]
+    const metrics = gCtx.measureText(meme.lines[meme.selectedLineIdx].txt)
+    const width = metrics.width
+    const height = metrics.fontBoundingBoxAscent
+    console.log(metrics);
+
+    gCtx.strokeRect(currMeme.x - width / 2, currMeme.y - height + 10, width, height)
 }
