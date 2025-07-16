@@ -9,7 +9,7 @@ var gMeme = {
             size: 30,
             color: 'white',
             x: 200,
-            y: 40
+            y: 40,
         },
         {
             txt: 'example2',
@@ -41,4 +41,27 @@ function addLine() {
 function switchLine() {
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
+}
+
+function setLineTxt(elInput){
+    gMeme.lines[gMeme.selectedLineIdx].txt = elInput.value
+}
+
+function setColor(color){
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function increaseFont() {
+    gMeme.lines[gMeme.selectedLineIdx].size += 10
+}
+
+function decreaseFont(){
+    gMeme.lines[gMeme.selectedLineIdx].size -= 10
+}
+
+function updateBoxPos(boxPos, height, width){
+    const currMeme = gMeme.lines[gMeme.selectedLineIdx]
+    currMeme.boxPos = boxPos
+    currMeme.boxHeight = height
+    currMeme.boxWidth = width
 }

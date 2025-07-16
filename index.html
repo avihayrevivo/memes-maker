@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <!-- <link rel="stylesheet" href="css/mq.css" /> -->
     <link rel="stylesheet" href="css/gallery.css" />
     <link rel="stylesheet" href="css/editor.css" />
     <link rel="stylesheet" href="css/helpers.css" />
+
     <title>Memes Maker</title>
 </head>
 
@@ -26,10 +28,13 @@
 
     <section class="editor hidden">
         <div class="canvas-container">
-            <canvas width="400" height="400"></canvas>
+            <canvas width="400" height="400"
+            onmousedown="onDown(event)" 
+            ontouchstart="onDown(event)">
+        </canvas>
         </div>
         <div class="editors">
-            <input oninput="setLineTxt(this)" class="canvas-text" type="text" placeholder="Type something">
+            <input oninput="onSetLineTxt(this)" class="canvas-text" type="text" placeholder="Type something">
             <input type="color" oninput="onSetColor(this.value)" name="color">
             <a href="#" onclick="downloadCanvas(this)" download>Download</a>
             <div>

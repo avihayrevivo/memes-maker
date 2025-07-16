@@ -8,3 +8,7 @@ var gImgs = [
 function getImgs(){
     return gImgs
 }
+
+function imgSelect(id){
+    gMeme.selectedImgIdx = id
+}

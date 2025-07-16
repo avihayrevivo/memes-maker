@@ -14,7 +14,7 @@ function renderMeme() {
     const elImg = new Image()
     elImg.src = `img/${meme.selectedImgIdx}.jpg`
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
-    meme.lines.forEach((line, idx) => {
+    meme.lines.forEach(line => {
         gCtx.fillStyle = line.color
         gCtx.font = line.size + 'px Arial'
         gCtx.textAlign = 'center'
@@ -23,7 +23,7 @@ function renderMeme() {
     drawSelectedBox()
 }
 
-function setImg() {
+function showImg() {
     const elGallery = document.querySelector('.gallery')
     elGallery.classList.add('hidden')
 
@@ -33,15 +33,13 @@ function setImg() {
     renderMeme()
 }
 
-function setLineTxt(elInput) {
-    const meme = getMeme()
-    meme.lines[meme.selectedLineIdx].txt = elInput.value
+function onSetLineTxt(elInput) {
+    setLineTxt(elInput)
     renderMeme()
 }
 
 function onSetColor(color) {
-    const meme = getMeme()
-    meme.lines[meme.selectedLineIdx].color = color
+    setColor(color)
     renderMeme()
 }
 
@@ -52,14 +50,12 @@ function downloadCanvas(elLink) {
 }
 
 function onIncreaseFont() {
-    const meme = getMeme()
-    meme.lines[meme.selectedLineIdx].size += 10
+    increaseFont()
     renderMeme()
 }
 
 function onDecreaseFont() {
-    const meme = getMeme()
-    meme.lines[meme.selectedLineIdx].size -= 10
+    decreaseFont()
     renderMeme()
 }
 
@@ -82,7 +78,27 @@ function drawSelectedBox() {
     const metrics = gCtx.measureText(meme.lines[meme.selectedLineIdx].txt)
     const width = metrics.width
     const height = metrics.fontBoundingBoxAscent
-    console.log(metrics);
+    const boxPos = { x: currMeme.x - width / 2, y: currMeme.y - height + 10 }
+    updateBoxPos(boxPos, height, width)
 
-    gCtx.strokeRect(currMeme.x - width / 2, currMeme.y - height + 10, width, height)
+    gCtx.strokeRect(currMeme.boxPos.x, currMeme.boxPos.y, width, height)
+}
+
+function onDown(ev) {
+    const input = document.querySelector('.canvas-text')
+    const meme = getMeme()
+    const boxPos = meme.lines[meme.selectedLineIdx].boxPos
+    const height = meme.lines[meme.selectedLineIdx].boxHeight
+    const width = meme.lines[meme.selectedLineIdx].boxWidth
+
+    const { offsetX, offsetY } = ev
+    if (
+        offsetX >= boxPos.x && offsetX <= boxPos.x + width &&
+        offsetY >= boxPos.y && offsetY <= boxPos.y + height
+    ) {
+        console.log('hi');
+        
+        input.focus()
+        input.select()
+    }
 }

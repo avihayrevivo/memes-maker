@@ -1,0 +1,22 @@
+@media (min-width: 768px) {
+    .editor {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 20px;
+    }
+
+    .canvas-container {
+        grid-column: 1;
+        justify-self: center;
+    }
+
+    .editors {
+        grid-column: 2;
+        border: 4px solid purple;
+        border-radius: 15px;
+        max-width: 500px;
+    }
+
+
+}
