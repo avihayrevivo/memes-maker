@@ -17,7 +17,7 @@ function getMeme() {
     return gMeme
 }
 
-function setImg(elImg, id){
+function setImg(){
     const elGallery = document.querySelector('.gallery')
     elGallery.classList.add('hidden')
 

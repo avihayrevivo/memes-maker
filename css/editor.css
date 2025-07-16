@@ -4,12 +4,16 @@
     gap: 20px;
 }
 
+
+
 .canvas-container{
     grid-column: 1;
+    justify-self: center;
 }
 
 .editors{
     grid-column: 2;
+    border: 1px solid purple;
 }
 
 canvas{
