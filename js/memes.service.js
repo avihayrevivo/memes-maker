@@ -17,14 +17,14 @@ function getMeme() {
     return gMeme
 }
 
-function setImg(elImg){
+function setImg(elImg, id){
     const elGallery = document.querySelector('.gallery')
     elGallery.classList.add('hidden')
 
     const elEditor = document.querySelector('.editor')
     elEditor.classList.remove('hidden')
 
-    renderMeme(elImg)
+    renderMeme(elImg, id)
 }
 
 function setLineTxt() {
