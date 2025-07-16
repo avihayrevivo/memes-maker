@@ -27,6 +27,9 @@ function setImg(elImg, id){
     renderMeme(elImg, id)
 }
 
-function setLineTxt() {
-    return document.querySelector('.canvas-text').value
+function setLineTxt(elInput) {
+    // const text = document.querySelector('.canvas-text').value
+    console.log(elInput.value);
+    
+    // renderMeme(text)
 }

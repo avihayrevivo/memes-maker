@@ -24,13 +24,3 @@ function renderMeme(elImg, id) {
     gCtx.fillText(text, 200, 40)
     // gCtx.strokeText(text, offsetX, offsetY)
 }
-
-
-
-
-
-
-
-
-
-const elTextInput = document.querySelector('.canvas-text')
