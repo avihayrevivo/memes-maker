@@ -24,12 +24,5 @@ function setImg(elImg, id){
     const elEditor = document.querySelector('.editor')
     elEditor.classList.remove('hidden')
 
-    renderMeme(elImg, id)
-}
-
-function setLineTxt(elInput) {
-    // const text = document.querySelector('.canvas-text').value
-    console.log(elInput.value);
-    
-    // renderMeme(text)
+    renderMeme()
 }

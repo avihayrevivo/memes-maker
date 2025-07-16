@@ -9,9 +9,11 @@ function onInit() {
     gCtx = gCanvas.getContext('2d')
 }
 
-function renderMeme(elImg, id) {
+function renderMeme() {
     const meme = getMeme()
-    meme.selectedLineIdx = id
+    const id = meme.selectedLineIdx
+    const elImg = new Image()
+    elImg.src = `img/${id}.jpg`
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
     const text = meme.lines[0].txt
     const color = meme.lines[0].color
@@ -23,4 +25,10 @@ function renderMeme(elImg, id) {
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, 200, 40)
     // gCtx.strokeText(text, offsetX, offsetY)
+}
+
+function setLineTxt(elInput) {
+    const meme = getMeme()
+    meme.lines[0].txt = elInput.value
+    renderMeme()
 }
