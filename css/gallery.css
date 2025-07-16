@@ -1,0 +1,11 @@
+.grid-container{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px;
+    margin-block-start: 3vh;
+}
+
+img{
+    height: 150px;
+    width: 150px;
+}

@@ -1,0 +1,14 @@
+header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    background-color: #b239e1;
+    height: 12vh;
+    border-radius: 15px;
+}
+
+.logo{
+    font-family: 'impact';
+    font-size: 1.375rem;
+}
