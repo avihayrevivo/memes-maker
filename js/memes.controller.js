@@ -21,7 +21,6 @@ function renderMeme(id) {
         gCtx.textAlign = 'center'
         gCtx.fillText(line.txt, line.x, line.y)
     })
-    drawSelectedBox()
 }
 
 function showImg() {
@@ -35,16 +34,19 @@ function showImg() {
     document.querySelector('.gallery-btn').classList.remove('selected')
 
     renderMeme()
+    drawSelectedBox()
 }
 
 function onSetLineTxt(elInput) {
     setLineTxt(elInput)
     renderMeme()
+    drawSelectedBox()
 }
 
 function onSetColor(color) {
     setColor(color)
     renderMeme()
+    drawSelectedBox()
 }
 
 function downloadCanvas(elLink) {
@@ -56,21 +58,25 @@ function downloadCanvas(elLink) {
 function onIncreaseFont() {
     increaseFont()
     renderMeme()
+    drawSelectedBox()
 }
 
 function onDecreaseFont() {
     decreaseFont()
     renderMeme()
+    drawSelectedBox()
 }
 
 function onAddLine() {
     addLine()
     renderMeme()
+    drawSelectedBox()
 }
 
 function onDeleteLine() {
     deleteLine()
     renderMeme()
+    drawSelectedBox()
 }
 
 function onSwitchUpLine() {
@@ -78,6 +84,7 @@ function onSwitchUpLine() {
     switchUpLine()
     document.querySelector('.canvas-text').value = meme.lines[meme.selectedLineIdx].txt
     renderMeme()
+    drawSelectedBox()
 }
 
 function onSwitchDownLine() {
@@ -85,34 +92,45 @@ function onSwitchDownLine() {
     switchDownLine()
     document.querySelector('.canvas-text').value = meme.lines[meme.selectedLineIdx].txt
     renderMeme()
+    drawSelectedBox()
 }
+
 
 function drawSelectedBox() {
     const meme = getMeme()
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    const currMeme = meme.lines[meme.selectedLineIdx]
-    const metrics = gCtx.measureText(meme.lines[meme.selectedLineIdx].txt)
+    const line = meme.lines[meme.selectedLineIdx]
+
+    const metrics = gCtx.measureText(line.txt)
     const width = metrics.width
     const height = metrics.fontBoundingBoxAscent
-    const boxPos = { x: currMeme.x - width / 2, y: currMeme.y - height + 10 }
-    updateBoxPos(boxPos, height, width)
 
-    gCtx.strokeRect(currMeme.boxPos.x, currMeme.boxPos.y, width, height)
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'black'
+    gCtx.strokeRect(line.x - width / 2, line.y - height + 10, width, height)
 }
 
 function onDown(ev) {
     const meme = getMeme()
-    const boxPos = meme.lines[meme.selectedLineIdx].boxPos
-    const height = meme.lines[meme.selectedLineIdx].boxHeight
-    const width = meme.lines[meme.selectedLineIdx].boxWidth
+    const line = meme.lines[meme.selectedLineIdx]
+    const metrics = gCtx.measureText(line.txt)
+    const width = metrics.width
+    const height = metrics.fontBoundingBoxAscent
 
     const { offsetX, offsetY } = ev
-    if (
-        offsetX >= boxPos.x && offsetX <= boxPos.x + width &&
-        offsetY >= boxPos.y && offsetY <= boxPos.y + height
-    ) {
-        document.querySelector('.canvas-text').value = meme.lines[meme.selectedLineIdx].txt
+
+    const rectLeft = line.x - width / 2
+    const rectRight = line.x + width / 2
+    const rectTop = line.y - height
+    const rectBottom = line.y
+
+    const isXIn = offsetX >= rectLeft && offsetX <= rectRight
+    const isYIn = offsetY >= rectTop && offsetY <= rectBottom
+
+    if (isXIn && isYIn) {
+        document.querySelector('.canvas-text').value = line.txt
+        renderMeme()  
+        drawSelectedBox() 
+    } else {
+        renderMeme()
     }
 }
-

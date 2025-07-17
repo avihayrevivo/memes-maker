@@ -34,6 +34,8 @@ function addLine() {
             color: 'black',
             x: 200,
             y: 100,
+            height: gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt).fontBoundingBoxAscent,
+            width: gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt).width
         }
     )
 }
@@ -69,18 +71,3 @@ function deleteLine() {
     gMeme.selectedLineIdx = 0
 }
 
-function updateBoxPos(boxPos, height, width) {
-    const currMeme = gMeme.lines[gMeme.selectedLineIdx]
-    currMeme.boxPos = boxPos
-    currMeme.boxHeight = height
-    currMeme.boxWidth = width
-}
-
-function getPos() {
-    const currMeme = meme.lines[meme.selectedLineIdx]
-    const metrics = gCtx.measureText(meme.lines[meme.selectedLineIdx].txt)
-    const width = metrics.width
-    const height = metrics.fontBoundingBoxAscent
-    const boxPos = { x: currMeme.x - width / 2, y: currMeme.y - height + 10 }
-    return boxPos
-}
