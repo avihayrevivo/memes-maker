@@ -59,6 +59,11 @@ function decreaseFont(){
     gMeme.lines[gMeme.selectedLineIdx].size -= 10
 }
 
+function deleteLine(){
+    gMeme.lines.splice(gMeme.selectedLineIdx ,1)
+    gMeme.selectedLineIdx = 0
+}
+
 function updateBoxPos(boxPos, height, width){
     const currMeme = gMeme.lines[gMeme.selectedLineIdx]
     currMeme.boxPos = boxPos

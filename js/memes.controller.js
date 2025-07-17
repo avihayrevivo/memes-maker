@@ -9,10 +9,11 @@ function onInit() {
     gCtx = gCanvas.getContext('2d')
 }
 
-function renderMeme() {
+function renderMeme(id) {
     const meme = getMeme()
     const elImg = new Image()
-    elImg.src = `img/${meme.selectedImgIdx}.jpg`
+    elImg.src = `img/${id}.jpg`
+    if (!id)elImg.src = `img/${meme.selectedImgIdx}.jpg`
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
     meme.lines.forEach(line => {
         gCtx.fillStyle = line.color
@@ -64,8 +65,13 @@ function onAddLine() {
     renderMeme()
 }
 
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
+}
+
 function onSwitchLine() {
-    const input = document.querySelector('.canvas-text').value = ''
+    document.querySelector('.canvas-text').value = ''
     switchLine()
     renderMeme()
 }
@@ -97,7 +103,7 @@ function onDown(ev) {
         offsetY >= boxPos.y && offsetY <= boxPos.y + height
     ) {
         console.log('hi');
-        
+
         input.focus()
         input.select()
     }

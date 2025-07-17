@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/header.css" />
-    <!-- <link rel="stylesheet" href="css/mq.css" /> -->
     <link rel="stylesheet" href="css/gallery.css" />
     <link rel="stylesheet" href="css/editor.css" />
+    <link rel="stylesheet" href="css/mq.css" />
     <link rel="stylesheet" href="css/helpers.css" />
 
     <title>Memes Maker</title>
@@ -17,10 +17,11 @@
 <body onload="onInit()">
 
     <header>
-        <nav>
             <div class="logo">Memes Maker</div>
-
-        </nav>
+            <div class="menu">
+                <button onclick="onShowGallery()" >gallery</button>
+                <button onclick="onShowEditor()" >editor</button>
+            </div>
     </header>
 
     <section class="gallery grid-container">
@@ -34,15 +35,18 @@
         </canvas>
         </div>
         <div class="editors">
-            <input oninput="onSetLineTxt(this)" class="canvas-text" type="text" placeholder="Type something">
-            <input type="color" oninput="onSetColor(this.value)" name="color">
-            <a href="#" onclick="downloadCanvas(this)" download>Download</a>
-            <div>
+            <input oninput="onSetLineTxt(this)" class="grid-level1 canvas-text" type="text" placeholder="Type something">
+            <div class="grid-level2">
+                <button onclick="onSwitchLine()">switch line</button>
+                <button onclick="onAddLine()">add line</button>
+                <button onclick="onDeleteLine()">delete line</button>
+            </div>
+            <div class="grid-level3">
                 <button onclick="onIncreaseFont()">+</button>
                 <button onclick="onDecreaseFont()">-</button>
-                <button onclick="onAddLine()">add line</button>
-                <button onclick="onSwitchLine()">switch line</button>
+                <input class="color" type="color" oninput="onSetColor(this.value)" name="color">
             </div>
+            <a class="download" href="#" onclick="downloadCanvas(this)" download>Download</a>
         </div>
     </section>
 

@@ -13,3 +13,21 @@ function onImgSelect(id) {
     imgSelect(id)
     showImg()
 }
+
+function onShowGallery(){
+    const elGallery = document.querySelector('.gallery')
+    elGallery.classList.remove('hidden')
+
+    const elEditor = document.querySelector('.editor')
+    elEditor.classList.add('hidden')
+}
+
+function onShowEditor(){
+    const elGallery = document.querySelector('.gallery')
+    elGallery.classList.add('hidden')
+
+    const elEditor = document.querySelector('.editor')
+    elEditor.classList.remove('hidden')
+
+    renderMeme(1)
+}

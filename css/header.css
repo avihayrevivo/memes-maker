@@ -1,4 +1,4 @@
-header{
+header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
@@ -9,7 +9,25 @@ header{
     margin-block-end: 3vh;
 }
 
-.logo{
+.logo {
+    grid-column: 1;
     font-family: 'impact';
     font-size: 1.375rem;
+}
+
+.menu {
+    grid-column: 2;
+}
+
+header button {
+    background: none;
+    border: none;
+    font-family: 'impact';
+    font-size: .9rem;
+    transition: transform .3s;
+}
+
+header button:hover{
+    cursor: pointer;
+    transform: translateY(-3px);
 }
