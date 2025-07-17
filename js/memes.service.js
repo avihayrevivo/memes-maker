@@ -21,6 +21,7 @@ var gMeme = {
     ]
 }
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+var gSavedMemes = []
 
 function getMeme() {
     return gMeme
@@ -34,10 +35,9 @@ function addLine() {
             color: 'black',
             x: 200,
             y: 100,
-            height: gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt).fontBoundingBoxAscent,
-            width: gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt).width
         }
     )
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
 function switchUpLine() {
@@ -71,3 +71,6 @@ function deleteLine() {
     gMeme.selectedLineIdx = 0
 }
 
+function saveMeme(){
+    gSavedMemes.push(gMeme)
+}

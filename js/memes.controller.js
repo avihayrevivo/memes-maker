@@ -27,6 +27,9 @@ function showImg() {
     const elGallery = document.querySelector('.gallery')
     elGallery.classList.add('hidden')
 
+    const elFilter = document.querySelector('.filter')
+    elFilter.classList.add('hidden')
+
     const elEditor = document.querySelector('.editor')
     elEditor.classList.remove('hidden')
 
@@ -50,6 +53,7 @@ function onSetColor(color) {
 }
 
 function downloadCanvas(elLink) {
+    renderMeme()
     const dataUrl = gCanvas.toDataURL()
     elLink.href = dataUrl
     elLink.download = 'my-meme'
@@ -128,9 +132,13 @@ function onDown(ev) {
 
     if (isXIn && isYIn) {
         document.querySelector('.canvas-text').value = line.txt
-        renderMeme()  
-        drawSelectedBox() 
+        renderMeme()
+        drawSelectedBox()
     } else {
         renderMeme()
     }
+}
+
+function onSaveMeme(){
+    saveMeme()
 }

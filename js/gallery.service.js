@@ -27,3 +27,20 @@ function imgSelect(id) {
     gMeme.selectedImgIdx = id
 }
 
+function getFilteredImgs(options) {
+    if (!options) options = {}
+    const filterBy = options.filterBy
+    var imgs = _filterImgs(filterBy)
+    return imgs
+}
+
+
+function _filterImgs(filterBy) {
+    var imgs = gImgs.slice()
+
+    if (filterBy.txt) {
+        const regexTxt = new RegExp(filterBy.txt, 'i')
+        imgs = imgs.filter(img => regexTxt.test(img.keywords))
+    }
+    return imgs
+}

@@ -1,4 +1,4 @@
-@media (min-width: 768px) {
+@media (min-width: 850px) {
     .editor {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -15,9 +15,4 @@
         border-radius: 15px;
         height: 400px;
     }
-
-    /* img {
-        height: 200px;
-        width: 200px;
-    } */
 }

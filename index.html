@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/editor.css" />
     <link rel="stylesheet" href="css/mq.css" />
     <link rel="stylesheet" href="css/helpers.css" />
+    <link rel="stylesheet" href="css/filter.css" />
 
     <title>Memes Maker</title>
 </head>
@@ -21,13 +22,17 @@
         <div class="menu">
             <button class="gallery-btn selected" onclick="onShowGallery()">gallery</button>
             <button class="editor-btn" onclick="onShowEditor()">editor</button>
+            <button class="saved-btn" onclick="onShowSaved()">saved</button>
         </div>
     </header>
-    <Div>
-        <button onclick="onFlexible()">i'm flexible</button>
+    <div>
+        <section class="filter">
+            <input name="txt" class="search" oninput="onSetFilterBy()" placeholder="search" type="text">
+            <button class="flexible" onclick="onFlexible()">i'm flexible</button>
+        </section>
         <section class="gallery grid-container">
         </section>
-    </Div>
+    </div>
 
     <section class="editor hidden">
         <div class="canvas-container">
@@ -38,20 +43,36 @@
             <input oninput="onSetLineTxt(this)" class="grid-level1 canvas-text" type="text"
                 placeholder="Type something">
             <div class="grid-level2">
-                <button onclick="onSwitchUpLine()">switch up line</button>
-                <button onclick="onSwitchDownLine()">switch down line</button>
-                <button onclick="onAddLine()">add line</button>
-                <button onclick="onDeleteLine()">delete line</button>
+                <button class="up-btn" onclick="onSwitchUpLine()">
+                    <img class="flaticon" src="img/emiji/up-arrow (1).png" alt="">
+                </button>
+                <button class="down-btn" onclick="onSwitchDownLine()">
+                    <img class="flaticon down" src="img/emiji/down-arrow.png" alt="">
+                </button>
+                <button class="add-btn" onclick="onAddLine()">
+                    <img class="flaticon" src="img/emiji/plus.png" alt="">
+                </button>
+                <button class="delete-btn" onclick="onDeleteLine()">
+                    <img class="flaticon" src="img/emiji/bin.png" alt="">
+                </button>
             </div>
             <div class="grid-level3">
-                <button onclick="onIncreaseFont()">+</button>
-                <button onclick="onDecreaseFont()">-</button>
+                <button onclick="onIncreaseFont()">
+                    <img class="flaticon" src="img/emiji/resize-font (1).png" alt="+">
+                </button>
+                <button onclick="onDecreaseFont()">
+                    <img class="flaticon" src="img/emiji/resize-font.png" alt="-">
+                </button>
                 <input class="color" type="color" oninput="onSetColor(this.value)" name="color">
             </div>
+            <button class="saved" onclick="onSaveMeme()">save</button>
             <a class="download" href="#" onclick="downloadCanvas(this)" download>Download</a>
         </div>
     </section>
 
+    <section class="saved-page">
+
+    </section>
 
     <script src="js/utils.service.js"></script>
     <script src="js/memes.service.js"></script>

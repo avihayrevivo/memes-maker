@@ -1,0 +1,15 @@
+.filter{
+    text-align: center;
+}
+
+.search{
+    border-radius: 15px;
+    height: 2rem;
+    width: 18rem;
+}
+
+.flexible{
+    height: 2rem;
+    border-radius: 10px;
+    font-weight: bold;
+}
