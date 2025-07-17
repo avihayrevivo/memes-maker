@@ -99,6 +99,23 @@ function onSwitchDownLine() {
     drawSelectedBox()
 }
 
+function onLeftAlignment() {
+    leftAlignment()
+    renderMeme()
+    drawSelectedBox()
+}
+
+function onRightAlignment() {
+    rightAlignment()
+    renderMeme()
+    drawSelectedBox()
+}
+
+function onCenterAlignment() {
+    centerAlignment()
+    renderMeme()
+    drawSelectedBox()
+}
 
 function drawSelectedBox() {
     const meme = getMeme()
@@ -139,6 +156,6 @@ function onDown(ev) {
     }
 }
 
-function onSaveMeme(){
+function onSaveMeme() {
     saveMeme()
 }

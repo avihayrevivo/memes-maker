@@ -24,7 +24,7 @@ function onShowGallery() {
 
 function onShowEditor() {
     onShowPage(2)
-    renderMeme(getRandomInt(1, 17))
+    onImgSelect(1)
 }
 
 function onShowSaved() {
@@ -33,7 +33,7 @@ function onShowSaved() {
 }
 
 function onFlexible() {
-    onShowEditor()
+    onImgSelect(getRandomInt(1, 17))
 }
 
 function onSetFilterBy() {

@@ -74,3 +74,15 @@ function deleteLine() {
 function saveMeme(){
     gSavedMemes.push(gMeme)
 }
+
+function leftAlignment(){
+    gMeme.lines[gMeme.selectedLineIdx].x = 100
+}
+
+function rightAlignment(){
+    gMeme.lines[gMeme.selectedLineIdx].x = 300
+}
+
+function centerAlignment(){
+    gMeme.lines[gMeme.selectedLineIdx].x = 200
+}
