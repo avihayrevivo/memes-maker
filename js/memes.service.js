@@ -33,21 +33,26 @@ function addLine() {
             size: 30,
             color: 'black',
             x: 200,
-            y: 100
+            y: 100,
         }
     )
 }
 
-function switchLine() {
+function switchUpLine() {
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
 }
 
-function setLineTxt(elInput){
+function switchDownLine() {
+    gMeme.selectedLineIdx--
+    if (gMeme.selectedLineIdx < 0) gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+
+function setLineTxt(elInput) {
     gMeme.lines[gMeme.selectedLineIdx].txt = elInput.value
 }
 
-function setColor(color){
+function setColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
@@ -55,18 +60,27 @@ function increaseFont() {
     gMeme.lines[gMeme.selectedLineIdx].size += 10
 }
 
-function decreaseFont(){
+function decreaseFont() {
     gMeme.lines[gMeme.selectedLineIdx].size -= 10
 }
 
-function deleteLine(){
-    gMeme.lines.splice(gMeme.selectedLineIdx ,1)
+function deleteLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     gMeme.selectedLineIdx = 0
 }
 
-function updateBoxPos(boxPos, height, width){
+function updateBoxPos(boxPos, height, width) {
     const currMeme = gMeme.lines[gMeme.selectedLineIdx]
     currMeme.boxPos = boxPos
     currMeme.boxHeight = height
     currMeme.boxWidth = width
+}
+
+function getPos() {
+    const currMeme = meme.lines[meme.selectedLineIdx]
+    const metrics = gCtx.measureText(meme.lines[meme.selectedLineIdx].txt)
+    const width = metrics.width
+    const height = metrics.fontBoundingBoxAscent
+    const boxPos = { x: currMeme.x - width / 2, y: currMeme.y - height + 10 }
+    return boxPos
 }

@@ -20,14 +20,24 @@ function onShowGallery(){
 
     const elEditor = document.querySelector('.editor')
     elEditor.classList.add('hidden')
+
+    document.querySelector('.gallery-btn').classList.add('selected')
+    document.querySelector('.editor-btn').classList.remove('selected')
 }
 
 function onShowEditor(){
     const elGallery = document.querySelector('.gallery')
     elGallery.classList.add('hidden')
-
+    
     const elEditor = document.querySelector('.editor')
     elEditor.classList.remove('hidden')
+    
+    document.querySelector('.editor-btn').classList.add('selected')
+    document.querySelector('.gallery-btn').classList.remove('selected')
 
-    renderMeme(1)
+    if (!txt) renderMeme(getRandomInt(1,17))
+}
+
+function onFlexible(){
+    onShowEditor()
 }

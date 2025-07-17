@@ -3,10 +3,10 @@ header {
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-items: center;
-    background-color: #b239e1;
+    background: linear-gradient(to right , rgb(150, 5, 150), #e5abfc);
     height: 12vh;
     border-radius: 15px;
-    margin-block-end: 3vh;
+    margin-block-end: 1vh;
 }
 
 .logo {
@@ -25,9 +25,11 @@ header button {
     font-family: 'impact';
     font-size: .9rem;
     transition: transform .3s;
+    height: 1.9rem;
 }
 
 header button:hover{
     cursor: pointer;
     transform: translateY(-3px);
 }
+

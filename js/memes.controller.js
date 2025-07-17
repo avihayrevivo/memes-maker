@@ -13,7 +13,7 @@ function renderMeme(id) {
     const meme = getMeme()
     const elImg = new Image()
     elImg.src = `img/${id}.jpg`
-    if (!id)elImg.src = `img/${meme.selectedImgIdx}.jpg`
+    if (!id) elImg.src = `img/${meme.selectedImgIdx}.jpg`
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
     meme.lines.forEach(line => {
         gCtx.fillStyle = line.color
@@ -30,6 +30,9 @@ function showImg() {
 
     const elEditor = document.querySelector('.editor')
     elEditor.classList.remove('hidden')
+
+    document.querySelector('.editor-btn').classList.add('selected')
+    document.querySelector('.gallery-btn').classList.remove('selected')
 
     renderMeme()
 }
@@ -70,9 +73,17 @@ function onDeleteLine() {
     renderMeme()
 }
 
-function onSwitchLine() {
-    document.querySelector('.canvas-text').value = ''
-    switchLine()
+function onSwitchUpLine() {
+    const meme = getMeme()
+    switchUpLine()
+    document.querySelector('.canvas-text').value = meme.lines[meme.selectedLineIdx].txt
+    renderMeme()
+}
+
+function onSwitchDownLine() {
+    const meme = getMeme()
+    switchDownLine()
+    document.querySelector('.canvas-text').value = meme.lines[meme.selectedLineIdx].txt
     renderMeme()
 }
 
@@ -91,7 +102,6 @@ function drawSelectedBox() {
 }
 
 function onDown(ev) {
-    const input = document.querySelector('.canvas-text')
     const meme = getMeme()
     const boxPos = meme.lines[meme.selectedLineIdx].boxPos
     const height = meme.lines[meme.selectedLineIdx].boxHeight
@@ -102,9 +112,7 @@ function onDown(ev) {
         offsetX >= boxPos.x && offsetX <= boxPos.x + width &&
         offsetY >= boxPos.y && offsetY <= boxPos.y + height
     ) {
-        console.log('hi');
-
-        input.focus()
-        input.select()
+        document.querySelector('.canvas-text').value = meme.lines[meme.selectedLineIdx].txt
     }
 }
+

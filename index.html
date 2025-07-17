@@ -17,27 +17,29 @@
 <body onload="onInit()">
 
     <header>
-            <div class="logo">Memes Maker</div>
-            <div class="menu">
-                <button onclick="onShowGallery()" >gallery</button>
-                <button onclick="onShowEditor()" >editor</button>
-            </div>
+        <div class="logo">Memes Maker</div>
+        <div class="menu">
+            <button class="gallery-btn selected" onclick="onShowGallery()">gallery</button>
+            <button class="editor-btn" onclick="onShowEditor()">editor</button>
+        </div>
     </header>
-
-    <section class="gallery grid-container">
-    </section>
+    <Div>
+        <button onclick="onFlexible()">i'm flexible</button>
+        <section class="gallery grid-container">
+        </section>
+    </Div>
 
     <section class="editor hidden">
         <div class="canvas-container">
-            <canvas width="400" height="400"
-            onmousedown="onDown(event)" 
-            ontouchstart="onDown(event)">
-        </canvas>
+            <canvas width="400" height="400" onmousedown="onDown(event)" ontouchstart="onDown(event)">
+            </canvas>
         </div>
         <div class="editors">
-            <input oninput="onSetLineTxt(this)" class="grid-level1 canvas-text" type="text" placeholder="Type something">
+            <input oninput="onSetLineTxt(this)" class="grid-level1 canvas-text" type="text"
+                placeholder="Type something">
             <div class="grid-level2">
-                <button onclick="onSwitchLine()">switch line</button>
+                <button onclick="onSwitchUpLine()">switch up line</button>
+                <button onclick="onSwitchDownLine()">switch down line</button>
                 <button onclick="onAddLine()">add line</button>
                 <button onclick="onDeleteLine()">delete line</button>
             </div>
@@ -51,6 +53,7 @@
     </section>
 
 
+    <script src="js/utils.service.js"></script>
     <script src="js/memes.service.js"></script>
     <script src="js/memes.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
