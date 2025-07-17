@@ -29,6 +29,14 @@
         <section class="filter">
             <input name="txt" class="search" oninput="onSetFilterBy()" placeholder="search" type="text">
             <button class="flexible" onclick="onFlexible()">i'm flexible</button>
+            <div class="keywords">
+                <button onclick="onMostPopular('funny', this)">funny</button>
+                <button onclick="onMostPopular('awkward', this)">awkward</button>
+                <button onclick="onMostPopular('baby', this)">baby</button>
+                <button onclick="onMostPopular('happy', this)">happy</button>
+                <button onclick="onMostPopular('bad', this)">bad</button>
+                <button onclick="onMostPopular('animal', this)">animal</button>
+            </div>
         </section>
         <section class="gallery grid-container">
         </section>

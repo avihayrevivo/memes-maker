@@ -13,3 +13,14 @@
     border-radius: 10px;
     font-weight: bold;
 }
+
+.keywords button{
+    font-size: .9rem;
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+
+.keywords button:hover{
+    transform: none;
+}

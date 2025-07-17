@@ -20,7 +20,7 @@ var gMeme = {
         }
     ]
 }
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+var gKeywordSearchCountMap = { 'funny': 0, 'awkward': 0, 'baby': 0, 'happy': 0, 'bad': 0, 'animal': 0 }
 var gSavedMemes = []
 
 function getMeme() {
@@ -71,18 +71,22 @@ function deleteLine() {
     gMeme.selectedLineIdx = 0
 }
 
-function saveMeme(){
-    gSavedMemes.push(gMeme)
-}
-
-function leftAlignment(){
+function leftAlignment() {
     gMeme.lines[gMeme.selectedLineIdx].x = 100
 }
 
-function rightAlignment(){
+function rightAlignment() {
     gMeme.lines[gMeme.selectedLineIdx].x = 300
 }
 
-function centerAlignment(){
+function centerAlignment() {
     gMeme.lines[gMeme.selectedLineIdx].x = 200
+}
+
+function mostPopular(word) {
+    gKeywordSearchCountMap[word]++
+
+    return Object.entries(gKeywordSearchCountMap).reduce((max, current) => {
+        return current[1] > max[1] ? current : max
+    })[0];
 }

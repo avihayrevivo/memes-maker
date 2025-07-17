@@ -156,6 +156,10 @@ function onDown(ev) {
     }
 }
 
-function onSaveMeme() {
-    saveMeme()
+function onMostPopular(word, elBtn){
+    let currSize = window.getComputedStyle(elBtn).fontSize
+    elBtn.style.fontSize = parseFloat(currSize) + 2 + 'px'
+    var word = mostPopular(word)
+    gQueryOptions.filterBy.txt = word
+    renderGallery()
 }
