@@ -11,6 +11,7 @@ button {
     transition: transform .3s;
     border: none;
     margin: 7px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
 }
 
 button:hover {
@@ -57,6 +58,11 @@ canvas {
     justify-self: center;
     align-self: center;
     margin-block-start: 5px;
+    transition: transform .3s;
+}
+
+.grid-level1:hover{
+    transform: translateY(-4px);
 }
 
 .grid-level2 {
@@ -71,22 +77,31 @@ canvas {
     justify-self: center;
 }
 
-.download {
-    grid-row: 4;
-    grid-column: 1;
+.grid-level4 {
+    grid-column: 1/span 2;
+    grid-row: 4 /span 2;
     justify-self: center;
-    align-self: center;
+}
+
+.download {
     color: black;
     text-decoration: none;
-    border: 2px solid black;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 6px;
     background-color: #de8afa;
     transition: transform .3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
 }
 
 .download:hover {
     transform: translateY(-4px);
+}
+
+.saved{
+    background-color: #4a90ff;
+    font-weight: bold;
+    height: 2rem;
+    width: 4.5rem;
 }
 
 .up-btn {
