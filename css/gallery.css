@@ -1,6 +1,6 @@
 .gallery{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
     margin-block-start: 1vh;
 }
@@ -16,4 +16,8 @@ img{
 img:hover{
     cursor: pointer;
     transform: translateY(-5px);
+}
+
+.gallery img{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
 }

@@ -4,21 +4,28 @@
 
 .search{
     border-radius: 15px;
-    height: 2.1rem;
-    width: 20rem;
+    height: 2.5rem;
+    width: 32rem;
 }
 
 .flexible{
-    height: 2rem;
+    height: 2.5rem;
     border-radius: 10px;
     font-weight: bold;
+    background-color: #f59fff;
+}
+
+.flexible:hover{
+    background-color: #f48dff;
 }
 
 .keywords button{
-    font-size: .9rem;
+    font-size: 1.3rem;
+    width: 5rem;
     border: none;
     background: none;
     box-shadow: none;
+    font-weight: bold;
 }
 
 .keywords button:hover{
@@ -26,7 +33,7 @@
 }
 
 .keywords{
-    padding: .8rem;
+    padding: 1rem;
     border-radius: 12px;
     background: linear-gradient(to right , rgb(251, 65, 251), #efc7ff);
     display: inline;

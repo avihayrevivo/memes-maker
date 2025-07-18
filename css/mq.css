@@ -15,4 +15,20 @@
         border-radius: 15px;
         height: 400px;
     }
+
+}
+
+@media (max-width: 660px) {
+    .keywords button {
+        font-size: 1rem;
+        width: 3.3rem;
+    }
+
+    .search{
+        width: 22rem;
+    }
+
+    .logo{
+        font-size: 2rem;
+    }
 }

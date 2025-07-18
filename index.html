@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/gallery.css" />
     <link rel="stylesheet" href="css/editor.css" />
+    <link rel="stylesheet" href="css/filter.css" />
     <link rel="stylesheet" href="css/mq.css" />
     <link rel="stylesheet" href="css/helpers.css" />
-    <link rel="stylesheet" href="css/filter.css" />
 
     <title>Memes Maker</title>
 </head>
@@ -46,7 +46,13 @@
 
     <section class="editor hidden">
         <div class="canvas-container">
-            <canvas width="400" height="400" onmousedown="onDown(event)" ontouchstart="onDown(event)">
+            <canvas width="400" height="400" 
+            onmousedown="onDown(event)" 
+            ontouchstart="onDown(event)"
+            onmouseup="onUp()" 
+            ontouchend="onUp()" 
+            onmousemove="onMove(event)"
+            ontouchmove="onMove(event)">
             </canvas>
         </div>
         <div class="editors">

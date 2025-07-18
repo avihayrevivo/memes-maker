@@ -2,6 +2,7 @@
 
 let gCanvas
 let gCtx
+let gPrevPos
 
 function onInit() {
     renderGallery()
@@ -117,9 +118,11 @@ function onCenterAlignment() {
     drawSelectedBox()
 }
 
-function drawSelectedBox() {
+function drawSelectedBox(idx) {
     const meme = getMeme()
-    const line = meme.lines[meme.selectedLineIdx]
+    var line
+    if (!idx) line = meme.lines[meme.selectedLineIdx]
+    else line = meme.lines[idx]
 
     const metrics = gCtx.measureText(line.txt)
     const width = metrics.width
@@ -132,34 +135,72 @@ function drawSelectedBox() {
 
 function onDown(ev) {
     const meme = getMeme()
-    const line = meme.lines[meme.selectedLineIdx]
-    const metrics = gCtx.measureText(line.txt)
-    const width = metrics.width
-    const height = metrics.fontBoundingBoxAscent
-
     const { offsetX, offsetY } = ev
-
-    const rectLeft = line.x - width / 2
-    const rectRight = line.x + width / 2
-    const rectTop = line.y - height
-    const rectBottom = line.y
-
-    const isXIn = offsetX >= rectLeft && offsetX <= rectRight
-    const isYIn = offsetY >= rectTop && offsetY <= rectBottom
-
-    if (isXIn && isYIn) {
-        document.querySelector('.canvas-text').value = line.txt
-        renderMeme()
-        drawSelectedBox()
-    } else {
-        renderMeme()
+    for (let i = 0; i < meme.lines.length; i++) {
+        let line = meme.lines[i]
+        let metrics = gCtx.measureText(line.txt)
+        let width = metrics.width
+        let height = metrics.fontBoundingBoxAscent
+        let rectLeft = line.x - width / 2
+        let rectRight = line.x + width / 2
+        let rectTop = line.y - height
+        let rectBottom = line.y
+        let isXIn = offsetX >= rectLeft && offsetX <= rectRight
+        let isYIn = offsetY >= rectTop && offsetY <= rectBottom
+        if (isXIn && isYIn) {
+            meme.selectedLineIdx = i
+            setMemeDrag(true)
+            const pos = getEvPos(ev)
+            gPrevPos = pos
+            document.querySelector('.canvas-text').value = line.txt
+            renderMeme()
+            drawSelectedBox(i)
+        } else {
+            renderMeme()
+        }
     }
 }
 
-function onMostPopular(word, elBtn){
+function onMove(ev) {
+    const meme = getMeme()
+    const isDrag = meme.lines[meme.selectedLineIdx].isDrag
+    if (!isDrag) return
+    const pos = getEvPos(ev)
+    const dx = pos.x - gPrevPos.x
+    const dy = pos.y - gPrevPos.y
+    moveMeme(dx, dy)
+    gPrevPos = pos
+    renderMeme()
+    drawSelectedBox()
+}
+
+function onUp() {
+    setMemeDrag(false)
+}
+
+function onMostPopular(word, elBtn) {
     let currSize = window.getComputedStyle(elBtn).fontSize
     elBtn.style.fontSize = parseFloat(currSize) + 2 + 'px'
     var word = mostPopular(word)
     gQueryOptions.filterBy.txt = word
     renderGallery()
+}
+
+function getEvPos(ev) {
+    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+
+    if (TOUCH_EVS.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        }
+    }
+    return pos
 }

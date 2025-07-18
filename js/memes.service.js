@@ -10,14 +10,8 @@ var gMeme = {
             color: 'white',
             x: 200,
             y: 40,
+            isDrag: false
         },
-        {
-            txt: 'example2',
-            size: 40,
-            color: 'black',
-            x: 200,
-            y: 360
-        }
     ]
 }
 var gKeywordSearchCountMap = { 'funny': 0, 'awkward': 0, 'baby': 0, 'happy': 0, 'bad': 0, 'animal': 0 }
@@ -35,6 +29,7 @@ function addLine() {
             color: 'black',
             x: 200,
             y: 100,
+            isDrag: false
         }
     )
     gMeme.selectedLineIdx = gMeme.lines.length - 1
@@ -89,4 +84,13 @@ function mostPopular(word) {
     return Object.entries(gKeywordSearchCountMap).reduce((max, current) => {
         return current[1] > max[1] ? current : max
     })[0];
+}
+
+function setMemeDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function moveMeme(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx].x += dx
+    gMeme.lines[gMeme.selectedLineIdx].y += dy
 }
