@@ -94,3 +94,28 @@ function moveMeme(dx, dy) {
     gMeme.lines[gMeme.selectedLineIdx].x += dx
     gMeme.lines[gMeme.selectedLineIdx].y += dy
 }
+
+function clearMemes() {
+    gMeme.lines = [{
+        txt: 'example',
+        size: 30,
+        color: 'white',
+        x: 200,
+        y: 40,
+        isDrag: false
+    }]
+}
+
+function addEmoji(emoji) {
+    gMeme.lines.push(
+        {
+            txt: emoji,
+            size: 30,
+            color: 'black',
+            x: 200,
+            y: 100,
+            isDrag: false
+        }
+    )
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+}

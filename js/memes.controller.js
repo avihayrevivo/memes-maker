@@ -204,3 +204,13 @@ function getEvPos(ev) {
     }
     return pos
 }
+
+function onRenderEmoji(idx) {
+    if (idx === 1) addEmoji('😂')
+    if (idx === 2) addEmoji('😭')
+    if (idx === 3) addEmoji('😎')
+    if (idx === 4) addEmoji('💣')
+    if (idx === 5) addEmoji('👻')
+    renderMeme()
+    drawSelectedBox()
+}

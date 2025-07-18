@@ -19,6 +19,7 @@ function onImgSelect(id) {
 }
 
 function onShowGallery() {
+    clearMemes()
     onShowPage(1)
 }
 
@@ -29,7 +30,6 @@ function onShowEditor() {
 
 function onShowSaved() {
     onShowPage(3)
-    renderSaved()
 }
 
 function onFlexible() {
@@ -95,6 +95,3 @@ function onShowPage(page) {
     }
 }
 
-function renderSaved(){
-
-}
