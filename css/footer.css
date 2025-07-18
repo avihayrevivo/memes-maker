@@ -1,0 +1,9 @@
+footer{
+    display: flex;
+    place-items: center;
+    border-radius: 12px;
+    height: 8vh;
+    margin-top: 4vh;
+    font-size: 1.2rem;
+    background: linear-gradient(to right , rgb(150, 5, 150), #e5abfc);
+}
