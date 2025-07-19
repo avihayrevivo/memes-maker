@@ -1,4 +1,8 @@
 @media (min-width: 850px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
     .editor {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -24,11 +28,11 @@
         width: 3.3rem;
     }
 
-    .search{
+    .search {
         width: 22rem;
     }
 
-    .logo{
+    .logo {
         font-size: 2rem;
     }
 }

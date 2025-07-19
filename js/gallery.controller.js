@@ -6,12 +6,17 @@ const gQueryOptions = {
 var gElImg
 
 function renderGallery() {
+    const uploadFile = `   <label class="custom-btn">  Upload imag
+    <input onchange="onImgInput(event)" type="file" accept=".jpg, .jpeg, .png, .webp"
+    class="file-input btn" id="file-input" name="image" />
+    </label>
+`
     const elGallery = document.querySelector('.gallery')
     const imgs = getFilteredImgs(gQueryOptions)
     var strHTML = imgs.map(img => `<img 
         onclick="onImgSelect(${img.id}, this)" src="${img.url}" alt="meme${img.id}">`)
 
-    elGallery.innerHTML = strHTML.join('')
+    elGallery.innerHTML = uploadFile + strHTML.join('')
 }
 
 function onImgSelect(id, elImg) {
@@ -96,4 +101,29 @@ function onShowPage(page) {
         document.querySelector('.gallery-btn').classList.remove('selected')
         document.querySelector('.saved-btn').classList.add('selected')
     }
+}
+
+function onImgInput(ev) {
+    loadImageFromInput(ev, onImgSelect)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+
+    reader.onload = (event) => {
+        const img = new Image()
+        img.src = event.target.result
+
+        img.onload = () => {
+            // console.log('img:', img)
+            const imgs = getImgs()
+            imgs.push(
+                { id: imgs.length, url: img }
+            )
+            onImageReady(imgs.length, img)
+        }
+    }
+
+    reader.readAsDataURL(ev.target.files[0])
+
 }
