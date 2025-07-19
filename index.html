@@ -17,107 +17,102 @@
 </head>
 
 <body onload="onInit()">
-
-    <header>
-        <div class="logo">Memes Maker</div>
-        <div class="menu">
-            <button class="gallery-btn selected" onclick="onShowGallery()">gallery</button>
-            <button class="editor-btn" onclick="onShowEditor()">editor</button>
-            <button class="saved-btn" onclick="onShowSaved()">saved</button>
-        </div>
-    </header>
-    <div>
-        <section class="filter">
-            <input name="txt" class="search" oninput="onSetFilterBy()" placeholder="search" type="text">
-            <button class="flexible" onclick="onFlexible()">i'm flexible</button>
-            <section class="filter-by-keywords">
-                <div class="keywords">
-                    <button onclick="onMostPopular('funny', this)">funny</button>
-                    <button onclick="onMostPopular('awkward', this)">awkward</button>
-                    <button onclick="onMostPopular('baby', this)">baby</button>
-                    <button onclick="onMostPopular('happy', this)">happy</button>
-                    <button onclick="onMostPopular('bad', this)">bad</button>
-                    <button onclick="onMostPopular('animal', this)">animal</button>
-                </div>
+    <div class="page-wrapper">
+        <header>
+            <div class="logo">Memes Maker</div>
+            <div class="menu">
+                <button class="gallery-btn selected" onclick="onShowGallery()">gallery</button>
+                <button class="editor-btn" onclick="onShowEditor()">editor</button>
+                <button class="saved-btn" onclick="onShowSaved()">saved</button>
+            </div>
+        </header>
+        <div>
+            <section class="filter">
+                <input name="txt" class="search" oninput="onSetFilterBy()" placeholder="search" type="text">
+                <button class="flexible" onclick="onFlexible()">i'm flexible</button>
+                <section class="filter-by-keywords">
+                    <div class="keywords">
+                        <button onclick="onMostPopular('funny', this)">funny</button>
+                        <button onclick="onMostPopular('awkward', this)">awkward</button>
+                        <button onclick="onMostPopular('baby', this)">baby</button>
+                        <button onclick="onMostPopular('happy', this)">happy</button>
+                        <button onclick="onMostPopular('bad', this)">bad</button>
+                        <button onclick="onMostPopular('animal', this)">animal</button>
+                    </div>
+                </section>
             </section>
+            <section class="gallery grid-container">
+            </section>
+        </div>
+
+        <section class="editor hidden">
+            <div class="canvas-container">
+                <canvas width="400" height="400" onmousedown="onDown(event)" ontouchstart="onDown(event)"
+                    onmouseup="onUp()" ontouchend="onUp()" onmousemove="onMove(event)" ontouchmove="onMove(event)">
+                </canvas>
+            </div>
+            <div class="editors">
+                <input oninput="onSetLineTxt(this)" class="grid-level1 canvas-text" type="text"
+                    placeholder="Type something">
+                <div class="grid-level2">
+                    <button class="up-btn" onclick="onSwitchUpLine()">
+                        <img class="flaticon" src="img/emiji/up-arrow (1).png" alt="">
+                    </button>
+                    <button class="down-btn" onclick="onSwitchDownLine()">
+                        <img class="flaticon down" src="img/emiji/down-arrow.png" alt="">
+                    </button>
+                    <button class="add-btn" onclick="onAddLine()">
+                        <img class="flaticon" src="img/emiji/plus.png" alt="">
+                    </button>
+                    <button class="delete-btn" onclick="onDeleteLine()">
+                        <img class="flaticon" src="img/emiji/bin.png" alt="">
+                    </button>
+                </div>
+                <div class="grid-level3">
+                    <button onclick="onIncreaseFont()">
+                        <img class="flaticon" src="img/emiji/resize-font (1).png" alt="+">
+                    </button>
+                    <button onclick="onDecreaseFont()">
+                        <img class="flaticon" src="img/emiji/resize-font.png" alt="-">
+                    </button>
+                    <input class="color" type="color" oninput="onSetColor(this.value)" name="color">
+                    <button class="left-btn" onclick="onLeftAlignment()">
+                        <img class="flaticon" src="img/emiji/align-left.png" alt="">
+                    </button>
+                    <button class="right-btn" onclick="onRightAlignment()">
+                        <img class="flaticon" src="img/emiji/right.png" alt="">
+                    </button>
+                    <button class="center-btn" onclick="onCenterAlignment()">
+                        <img class="flaticon" src="img/emiji/center.png" alt="">
+                    </button>
+                </div>
+                <div class="grid-level4">
+                    <button>
+                        <img class="flaticon" onclick="onRenderEmoji(1)" src="img/emiji/funny.png" alt="">
+                    </button>
+                    <button>
+                        <img class="flaticon" onclick="onRenderEmoji(2)" src="img/emiji/cry.jpg" alt="">
+                    </button>
+                    <button>
+                        <img class="flaticon" onclick="onRenderEmoji(3)" src="img/emiji/glasses.jpg" alt="">
+                    </button>
+                    <button>
+                        <img class="flaticon" onclick="onRenderEmoji(4)" src="img/emiji/bomb.png" alt="">
+                    </button>
+                    <button>
+                        <img class="flaticon" onclick="onRenderEmoji(5)" src="img/emiji/ghost.jpg" alt="">
+                    </button>
+                </div>
+                <div class="grid-level5">
+                    <button class="saved" onclick="onSaveMeme()">save</button>
+                    <a class="download" href="#" onclick="downloadCanvas(this)" download>Download</a>
+                </div>
+            </div>
         </section>
-        <section class="gallery grid-container">
+
+        <section class="saved-page">
         </section>
     </div>
-
-    <section class="editor hidden">
-        <div class="canvas-container">
-            <canvas width="400" height="400" 
-            onmousedown="onDown(event)" 
-            ontouchstart="onDown(event)"
-            onmouseup="onUp()" 
-            ontouchend="onUp()" 
-            onmousemove="onMove(event)"
-            ontouchmove="onMove(event)">
-            </canvas>
-        </div>
-        <div class="editors">
-            <input oninput="onSetLineTxt(this)" class="grid-level1 canvas-text" type="text"
-                placeholder="Type something">
-            <div class="grid-level2">
-                <button class="up-btn" onclick="onSwitchUpLine()">
-                    <img class="flaticon" src="img/emiji/up-arrow (1).png" alt="">
-                </button>
-                <button class="down-btn" onclick="onSwitchDownLine()">
-                    <img class="flaticon down" src="img/emiji/down-arrow.png" alt="">
-                </button>
-                <button class="add-btn" onclick="onAddLine()">
-                    <img class="flaticon" src="img/emiji/plus.png" alt="">
-                </button>
-                <button class="delete-btn" onclick="onDeleteLine()">
-                    <img class="flaticon" src="img/emiji/bin.png" alt="">
-                </button>
-            </div>
-            <div class="grid-level3">
-                <button onclick="onIncreaseFont()">
-                    <img class="flaticon" src="img/emiji/resize-font (1).png" alt="+">
-                </button>
-                <button onclick="onDecreaseFont()">
-                    <img class="flaticon" src="img/emiji/resize-font.png" alt="-">
-                </button>
-                <input class="color" type="color" oninput="onSetColor(this.value)" name="color">
-                <button class="left-btn" onclick="onLeftAlignment()">
-                    <img class="flaticon" src="img/emiji/align-left.png" alt="">
-                </button>
-                <button class="right-btn" onclick="onRightAlignment()">
-                    <img class="flaticon" src="img/emiji/right.png" alt="">
-                </button>
-                <button class="center-btn" onclick="onCenterAlignment()">
-                    <img class="flaticon" src="img/emiji/center.png" alt="">
-                </button>
-            </div>
-            <div class="grid-level4">
-                <button>
-                    <img class="flaticon" onclick="onRenderEmoji(1)" src="img/emiji/funny.png" alt="">
-                </button>
-                <button>
-                    <img class="flaticon" onclick="onRenderEmoji(2)" src="img/emiji/cry.jpg" alt="">
-                </button>
-                <button>
-                    <img class="flaticon" onclick="onRenderEmoji(3)" src="img/emiji/glasses.jpg" alt="">
-                </button>
-                <button>
-                    <img class="flaticon" onclick="onRenderEmoji(4)" src="img/emiji/bomb.png" alt="">
-                </button>
-                <button>
-                    <img class="flaticon" onclick="onRenderEmoji(5)" src="img/emiji/ghost.jpg" alt="">
-                </button>
-            </div>
-            <div class="grid-level5">
-                <button class="saved" onclick="onSaveMeme()">save</button>
-                <a class="download" href="#" onclick="downloadCanvas(this)" download>Download</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="saved-page">
-    </section>
-
     <footer>© 2025 Memes Maker. All rights reserved Avihay Revivo</footer>
 
     <script src="js/utils.service.js"></script>
