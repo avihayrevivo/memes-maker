@@ -17,6 +17,13 @@ var gImgs = [
     { id: 14, url: 'img/14.jpg', keywords: ['bad', 'awkward'] },
     { id: 15, url: 'img/15.jpg', keywords: ['funny', 'awkward'] },
     { id: 16, url: 'img/16.jpg', keywords: ['bad', 'awkward'] },
+    { id: 17, url: 'img/17.jpg', keywords: ['animal'] },
+    { id: 18, url: 'img/18.jpg', keywords: ['happy'] },
+    { id: 19, url: 'img/19.jpg', keywords: ['animal', 'awkward'] },
+    { id: 20, url: 'img/20.jpg', keywords: ['funny', 'happy', 'baby'] },
+    { id: 21, url: 'img/21.jpg', keywords: ['funny', 'awkward'] },
+    { id: 22, url: 'img/22.jpg', keywords: ['bad', 'awkward', 'funny'] },
+    { id: 23, url: 'img/23.jpg', keywords: ['funny', 'awkward', 'happy'] },
 ]
 
 function getImgs() {

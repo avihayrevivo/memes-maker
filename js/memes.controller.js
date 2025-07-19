@@ -214,3 +214,8 @@ function onRenderEmoji(idx) {
     renderMeme()
     drawSelectedBox()
 }
+
+function coverCanvasWithImg(elImg = document.querySelector('img')) {
+    gCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gCanvas.width
+    gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
+}

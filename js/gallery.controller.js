@@ -3,17 +3,20 @@
 const gQueryOptions = {
     filterBy: { txt: '' }
 }
+var gElImg
 
 function renderGallery() {
     const elGallery = document.querySelector('.gallery')
     const imgs = getFilteredImgs(gQueryOptions)
     var strHTML = imgs.map(img => `<img 
-        onclick="onImgSelect(${img.id})" src="${img.url}" alt="meme${img.id}">`)
+        onclick="onImgSelect(${img.id}, this)" src="${img.url}" alt="meme${img.id}">`)
 
     elGallery.innerHTML = strHTML.join('')
 }
 
-function onImgSelect(id) {
+function onImgSelect(id, elImg) {
+    gElImg = elImg
+    coverCanvasWithImg(elImg)
     imgSelect(id)
     showImg()
 }
@@ -94,4 +97,3 @@ function onShowPage(page) {
         document.querySelector('.saved-btn').classList.add('selected')
     }
 }
-
