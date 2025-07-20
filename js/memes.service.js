@@ -104,6 +104,7 @@ function clearMemes() {
         y: 40,
         isDrag: false
     }]
+    return gMeme.lines[0].txt
 }
 
 function addEmoji(emoji) {

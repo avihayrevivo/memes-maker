@@ -27,7 +27,8 @@ function onImgSelect(id, elImg) {
 }
 
 function onShowGallery() {
-    clearMemes()
+    const txt = clearMemes()
+    document.querySelector('.canvas-text').value = txt
     onShowPage(1)
 }
 
