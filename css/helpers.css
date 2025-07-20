@@ -4,4 +4,5 @@
 
 .selected{
     background-color: #fff;
+    transition: .3s;
 }
