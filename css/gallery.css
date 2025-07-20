@@ -2,13 +2,15 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 10px;
-    margin-block-start: 1vh;
+    margin-block-start: 2vh;
 }
 
 img {
-    border-radius: 10px;
-    height: auto;
+    border-radius: 8px;
     width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     transition: transform .3s;
     display: block;
 }
@@ -30,10 +32,12 @@ img:hover {
     display: grid;
     justify-items: center;
     align-items: center;
-    height: 11rem;
+    /* height: 11rem; */
+    width: 100%;
+    height: auto;
     font-size: 1.6rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border-radius: 10px;
+    border-radius: 8px;
     background: linear-gradient(to right , rgb(97, 97, 97), #c9c9c9);
     transition: transform .3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
