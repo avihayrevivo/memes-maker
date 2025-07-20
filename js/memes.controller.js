@@ -53,6 +53,10 @@ function onSetColor(color) {
     drawSelectedBox()
 }
 
+function onSetFontColor() {
+    document.querySelector('.color').click()
+}
+
 function downloadCanvas(elLink) {
     renderMeme()
     const dataUrl = gCanvas.toDataURL()

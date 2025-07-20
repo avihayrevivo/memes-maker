@@ -23,7 +23,7 @@ button:hover {
     transform: translateY(-3px);
 }
 
-.color {
+/* .color {
     height: 40px;
     cursor: pointer;
     border-radius: 8px;
@@ -32,6 +32,10 @@ button:hover {
 
 .color:hover {
     transform: translateY(-3px);
+} */
+
+.color{
+    display: none;
 }
 
 .canvas-container {
