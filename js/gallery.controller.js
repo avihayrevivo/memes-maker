@@ -115,7 +115,6 @@ function loadImageFromInput(ev, onImageReady) {
         img.src = event.target.result
 
         img.onload = () => {
-            // console.log('img:', img)
             const imgs = getImgs()
             imgs.push(
                 { id: imgs.length, url: img }
@@ -123,7 +122,5 @@ function loadImageFromInput(ev, onImageReady) {
             onImageReady(imgs.length, img)
         }
     }
-
     reader.readAsDataURL(ev.target.files[0])
-
 }

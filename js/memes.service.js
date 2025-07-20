@@ -119,3 +119,4 @@ function addEmoji(emoji) {
     )
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
+

@@ -28,9 +28,10 @@
         </header>
         <div>
             <section class="filter">
-                <input name="txt" class="search" oninput="onSetFilterBy()" placeholder="search" type="text">
-                <button class="flexible" onclick="onFlexible()">i'm flexible</button>
-                <section class="filter-by-keywords">
+                <div class="search-and-flexible">
+                    <input name="txt" class="search" oninput="onSetFilterBy()" placeholder="search" type="text">
+                    <button class="flexible" onclick="onFlexible()">i'm flexible</button>
+                </div>
                     <div class="keywords">
                         <button onclick="onMostPopular('funny', this)">funny</button>
                         <button onclick="onMostPopular('awkward', this)">awkward</button>
@@ -38,9 +39,7 @@
                         <button onclick="onMostPopular('happy', this)">happy</button>
                         <button onclick="onMostPopular('bad', this)">bad</button>
                         <button onclick="onMostPopular('animal', this)">animal</button>
-                    </div>
-                    
-                </section>
+                    </div>                   
             </section>
             <section class="gallery grid-container">
             </section>
