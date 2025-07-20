@@ -139,7 +139,10 @@ function drawSelectedBox(idx) {
 
 function onDown(ev) {
     const meme = getMeme()
-    const { offsetX, offsetY } = ev
+    const pos = getEvPos(ev)
+    const offsetX = pos.x
+    const offsetY = pos.y
+
     for (let i = 0; i < meme.lines.length; i++) {
         let line = meme.lines[i]
         let metrics = gCtx.measureText(line.txt)
@@ -154,7 +157,6 @@ function onDown(ev) {
         if (isXIn && isYIn) {
             meme.selectedLineIdx = i
             setMemeDrag(true)
-            const pos = getEvPos(ev)
             gPrevPos = pos
             document.querySelector('.canvas-text').value = line.txt
             renderMeme()
