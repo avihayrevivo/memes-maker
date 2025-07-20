@@ -34,3 +34,14 @@
         font-size: 2rem;
     }
 }
+
+@media (max-width: 495px) {
+    .keywords button {
+        font-size: .7rem;
+        width: 2.5rem;
+    }
+
+    .search {
+        width: 16.8rem;
+    }
+}
